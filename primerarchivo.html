@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<script>
+    var carros = [];
+    const carros2 = ["unacadena",3,9,1,10,500,1,10,true];
 
-</body>
-</html>
+   /* let j;
+    let aux;*/
+
+    for (let t=0, len1= carros2.length; t< len1;t++ ){
+        if (typeof carros2[t]=="number"){
+            carros[t]=carros2[t];
+        }
+    }
+    for (let i=0, len= carros.length; i< len;i++ ){
+                for(j=1; j < (carros.length-1); j++){
+                    if(carros[j-1] < carros[j]){
+                        aux = carros[j-1];
+                        carros[j-1] = carros[j];
+                        carros[j] = aux;
+                    }
+                }
+    }
+    console.log ("Numero de mayor a menor: " + carros)
+
+</script>

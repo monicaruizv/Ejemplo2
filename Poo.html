@@ -1,0 +1,75 @@
+ <script>
+
+      class  Persona {
+         nombre;
+         apellido;
+         edad;
+         getDetalles(){
+           return (this.nombre + " " +  this.apellido + " con " + this.edad + " de edad");
+         }
+         constructor(nombre="N",apellido="A",edad=0) {
+          this.nombre=nombre;
+          this.apellido=apellido;
+          this.edad=edad;
+          //console.warn(this.nombre + "" + this.apellido + "" + this.edad);
+         }
+       }
+      class Jugador extends Persona {
+        posicion;
+       getDetalles(){
+
+        return super.getDetalles () + " en la posicion de "+ this.posicion;
+        }
+       constructor(nombre="N",apellido="A",edad=0, posicion) {
+        super (nombre,apellido,edad);
+        this.posicion=posicion
+       }
+      }
+      class Entrenador extends Persona{
+        experiencia;
+        idfederacion;
+
+         getDetalles(){
+
+          return super.getDetalles () + " con  "+ this.experiencia + " anios de experiencia y numero de federacionn  " + this.idfederacion;
+         }
+         constructor(nombre="N",apellido="A",edad=0, experiencia=1, idfederacion= Math.round ((Math.random()+10000))) {
+          super (nombre,apellido,edad);
+          this.experiencia= experiencia;
+          this.idfederacion=idfederacion;
+         }
+
+      }
+      class Equipo {
+            jugador;
+            Entrenador;
+
+         constructor(Jugador, Entrenador) {
+           this.jugador=Jugador;
+           this.Entrenador=Entrenador;
+         }
+
+         getDetalles(){
+            console.log(this.Entrenador.getDetalles());
+              for (let i=0; i < this.jugador.length;i++) {
+                  console.log(this.jugador[i].getDetalles());
+              }
+
+          }
+
+      }
+
+
+      let jugador1 = [
+       new Jugador("Hector", "Torres",33,"Delantero"),
+       new Jugador("Jorge", "Ruiz",63,"Portero"),
+      new Jugador("Alberto", "García",28,"Defensa"),
+      new Jugador("Heriberto", "Valdez",40,"Medio")
+      ]
+      let entrenador1 = new Entrenador("Carlos","Valdez",50,10);
+      let equipo1 = new Equipo(jugador1,entrenador1);
+       equipo1.getDetalles();
+
+    //  console.log(jugador1.getDetalles());
+      // console.log(entrenador1.getDetalles());
+ </script>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // CLASE PADRE
+    class Persona {
+        nombre;
+        edad;
+
+        obtenerDetalles() {
+            return "me llamo " + this.nombre +" y tengo " + this.edad + " años ";
+        }
+
+        constructor(nombre, edad){
+            this.nombre = nombre;
+            this.edad = edad;
+        }
+    }
+
+    // CLASE HIJO ESTUDIANTE
+
+    class Estudiante extends Persona{
+        calificacion;
+
+        obtenerDetalles(){
+            return super.obtenerDetalles() + " mi calificacion es de " + this.calificacion.toFixed(1);
+        }
+    }
+
+
+    // CLASE HIJO PROFESOR
+
+    class Profesor extends Persona {
+        asignatura;
+        nivel;
+
+        constructor(nombre, edad, asignatura='JS', nivel='Básico'){
+            super(nombre, edad);
+            this.asignatura = asignatura;
+            this.nivel = nivel;
+        }
+
+        obtenerDetalles(){
+            return super.obtenerDetalles() + " mi asignatura es " + this.asignatura + " nivel " + this.nivel;
+        }
+    }
+
+    // CLASE HIJO GRUPO
+
+    class Grupo{
+        profesor;
+        promedio;
+        estudiantes;
+
+        constructor(profesor, estudiantes){
+            this.profesor = profesor;
+            this.estudiantes = estudiantes;
+        }
+
+        calificar(){
+            for(let i=0; i<this.estudiantes.length; i++){
+                this.estudiantes[i].calificacion = Math.random() * 10;
+            }
+        }
+
+        calcularPromedio(suma){
+            suma=0;
+            for(let i=0; i<this.estudiantes.length; i++){
+                suma += this.estudiantes[i].calificacion;
+            }
+
+            this.promedio = suma / this.estudiantes.length;
+        }
+
+        obtenerDetalles(){
+            console.log(this.profesor.obtenerDetalles());
+            for(let i=0; i<this.estudiantes.length; i++){
+                console.log(this.estudiantes[i].obtenerDetalles());
+            }
+        }
+
+    }
+
+
+    let profesor = new Profesor('Julian',29);
+    let estudiantes= [
+        new Estudiante('Marcela', 27),
+        new Estudiante('Catherine', 25),
+        new Estudiante('Maria', 24),
+        new Estudiante('Karen', 22),
+        new Estudiante('Nicol', 26),
+        new Estudiante('Sara', 23)
+    ];
+
+    // LLAMAR OBJETOS
+
+    // let persona = new Persona ("Marcela",27);
+    // console.log(persona.obDetalle());
+    // console.log(new Persona('Emma',3).obtenerDetalles());
+    // console.log(new Estudiante('Marcela',27).obtenerDetalles());
+
+    let grupo = new Grupo(profesor,estudiantes);
+
+
+    grupo.calificar();
+    grupo.calcularPromedio();
+    grupo.obtenerDetalles();
+
+    console.log("el promedio de la clase es: " + grupo.promedio.toFixed(1))
+
+    console.log(JSON.stringify(grupo))
+
+</script>
+</body>
+</html>

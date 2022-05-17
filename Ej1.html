@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio1</title>
+</head>
+<body>
+<script>
+    /*
+//Par -- Impar--
+    let n;
+    for (let i=0; i<5;i++ ){
+        n= Math.round( Math.random()*100);
+        if (n % 2=== 0){
+            console.log("El numero " +  n + " es par")
+        } else{
+            console.log("El numero " +  n + " es impar")
+        }
+    }
+//Impresion multiplos de un numero n, del 1 al 100
+    let n=5;
+    let aux ;
+    for (let i=1; i<101;i++ ){
+        aux= n * i;
+        console.log(i + ".-"+ aux);
+
+
+    }
+    //Buscar una letra en una cadena de texto y contar cuantas veces se encuentra en ella
+    let cadena ="habia una vez un pato que le gustaba nadar";
+    let carac='a'; //caracter a buscar en la cadena
+    let car='';
+    let x=0;
+    for (let i =0; i< cadena.length;i++ ){
+        car = cadena.charAt(i);
+         if (car===carac){
+            x=x+1;
+         }
+    }
+    console.log("la letra " + carac + " se repite " + x + " veces en la cadena " + cadena);
+    */
+    let texto="La ruta nos aporto otro paso natural";
+   // let texto2="";
+    let aux="";
+
+    texto2= texto.toLocaleLowerCase().replaceAll(" ","");
+    //texto2= texto2.toLocaleLowerCase().replace(' ','');
+
+       console.log("Textoorginal---" + texto2);
+       for (let x = (texto2.length);x>= 0;x--){
+           aux = aux + texto2.charAt(x);
+       }
+
+        console.log("Texto en reversa---"+aux);
+        if (texto2===aux){
+            console.log("Son palindromos");
+            }
+            else {
+                console.log("NO son palindromos");
+            }
+
+</script>
+</body>
+</html>
